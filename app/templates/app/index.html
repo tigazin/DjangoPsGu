@@ -1,0 +1,67 @@
+﻿{% extends "app/layout.html" %}
+
+{% block content %}
+
+<div class="jumbotron">
+    <h1>КЦдизайн</h1>
+    <p class="lead">КЦдизайн- </p>
+    <p><a href="https://www.djangoproject.com/" class="btn btn-primary btn-large">Подробнее &raquo;</a></p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Красивые дизайны</h2>
+        <p>
+           Мы тратитим по 10 часов на один дизайн
+        </p>
+        <p><a class="btn btn-default" href="https://djangobook.com/django-tutorials/">Подробнее &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Сразу адаптированы к мобильным устройствам</h2>
+        <p></p>
+        <p><a class="btn btn-default" href="https://pypi.org/">Подробнее &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Возврат средств в течении 24ч</h2>
+        <p>Вы можете легко вернуть деньги.</p>
+        <p><a class="btn btn-default" href="http://azure.microsoft.com">Подробнее &raquo;</a></p>
+    </div>
+</div>
+<div class="container">
+    <div class="slider">
+        <div class="slides">
+            <div class="slide"><img src="https://s.tmimgcdn.com/scr/42700/42775-original.jpg" alt="Image 1"></div>
+            <div class="slide"><img src="https://akrato.com/images/properties/dev/mobileversion.png" alt="Image 2"></div>
+            <div class="slide"><img src="https://images.prismic.io/credoprint/a91f8afb-6f00-4d6f-a1a3-93d9e1b5b492_img2.jpg?auto=compress,format" alt="Image 3"></div>
+        </div>
+        <div class="controls">
+            <button class="control prev">&#10094;</button>
+            <button class="control next">&#10095;</button>
+        </div>
+    </div>
+
+</div>
+<script>
+    $(document).ready(function () {
+        const $slides = $('.slides');
+        const $slide = $('.slide');
+        const slideCount = $slide.length;
+        let currentIndex = 0;
+
+        $('.next').click(function () {
+            currentIndex = (currentIndex + 1) % slideCount;
+            updateSlider();
+        });
+
+        $('.prev').click(function () {
+            currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+            updateSlider();
+        });
+
+        function updateSlider() {
+            const offset = -currentIndex * 100;
+            $slides.css('transform', `translateX(${offset}%)`);
+        }
+    });
+</script>
+{% endblock %}
